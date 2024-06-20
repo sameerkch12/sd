@@ -3,7 +3,7 @@ const { ndown } = require('nayan-media-downloader');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5000
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +22,6 @@ app.post('/download', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
