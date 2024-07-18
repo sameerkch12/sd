@@ -30,4 +30,5 @@ app.listen(port, () => {
 // Fix the syntax error in setInterval
 setInterval(() => {
     http.get('https://sd-01jq.onrender.com/download');
+    console.log("Server hit");
 }, 5 * 60 * 1000); // Add the missing comma
