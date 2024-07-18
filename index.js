@@ -1,7 +1,7 @@
 const express = require('express');
 const { ndown } = require('nayan-media-downloader');
 const cors = require('cors');
-const http = require('http'); // Add this line to import the http module
+const https = require('https'); // Use https module
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -27,8 +27,11 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
-// Fix the syntax error in setInterval
+// Use https module for https URLs
 setInterval(() => {
-    http.get('https://sd-01jq.onrender.com/download');
-    console.log("Server hit");
+    https.get('https://sd-01jq.onrender.com/download', (res) => {
+        console.log(`Server hit with status code: ${res.statusCode}`);
+    }).on('error', (e) => {
+        console.error(`Got error: ${e.message}`);
+    });
 }, 5 * 60 * 1000); // Add the missing comma
